@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #e8e8e8;
+  padding: 23px 20px;
+  font-size: 14px;
+}
+
+.button {
+  background-image: linear-gradient(to bottom, #9DFFB3, #70D487);
+  box-shadow: 0 0 10px silver;
+  border-radius: 5px;
+  padding: 0.5vh 0.5vw;
+  text-decoration: none;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+  display: inline-block;
+  color: black;
+  cursor: pointer;
+  border: 0;
+
+  &:active {
+    color: inherit;
+  }
+}
+
+.input {
+  border-radius: 0.2vh;
+  border: 0;
+  box-shadow: 0 0 0px 1px silver;
+  padding: 0.3vh 0.2vw;
+}
