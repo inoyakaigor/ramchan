@@ -6,8 +6,6 @@ export default class FormView extends Component {
   render() {
     const {handleSubmit, handleCancel} = this.props
 
-    console.log('handleSubmit is', handleSubmit)
-
     return <form onSubmit={handleSubmit}>
               <TextField
                 floatingLabelText='Введите текст поста'

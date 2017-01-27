@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   threads: [
-    {date: new Date()*1, message: 'Hello post!'}
+    {id: 1, date: new Date()*1, message: 'Hello post!'}
   ],
   writing: false
 }
@@ -18,7 +18,12 @@ export default function app(state = initialState, action) {
     case WRITE_POST:
       return {...state, writing: action.writing}
     case POST_WRITTEN:
-      return {...state, message: action.payload, writing: action.writing}
+      let max_id = state.threads.sort((p, n) => {
+        return p.id > n.id ? 1 : p.id < n.id ? -1 : 0
+      }).slice(-1)[0].id
+      let thread = {id: ++max_id, message: action.payload.message, date: action.payload.date}
+      let threads = state.threads.concat(thread)
+      return {...state, threads, writing: action.writing}
     default:
       return state
   }

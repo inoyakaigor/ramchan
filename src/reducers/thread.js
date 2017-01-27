@@ -3,6 +3,7 @@ import {
 } from '../constants/thread.js'
 
 const initialState = {
+  id: 1,
   comments: [
     {date: new Date()*1, text: 'Hello comments!'}
   ]
