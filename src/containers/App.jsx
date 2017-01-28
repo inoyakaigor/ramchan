@@ -32,7 +32,7 @@ const muiTheme = getMuiTheme({
 })
 
 function mapStateToProps (state) {
-    return {
+  return {
     writing: state.app.writing,
     threads: state.app.threads
   }

@@ -1,18 +1,15 @@
 import {
-  SHOW_THREAD
+  SET_CURR_THREAD
 } from '../constants/thread.js'
 
 const initialState = {
-  id: 1,
-  comments: [
-    {date: new Date()*1, text: 'Hello comments!'}
-  ]
+  curr_thread: null
 }
 
 export default function thread(state = initialState, action) {
   switch (action.type) {
-    case SHOW_THREAD:
-      return {...state, id: action.id}
+    case SET_CURR_THREAD:
+      return {...state, curr_thread: action.payload}
     default:
       return state
   }

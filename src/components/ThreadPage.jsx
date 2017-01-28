@@ -1,10 +1,33 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
-export default class ThreadPage extends Component {
+import ThreadPageView from './ThreadPageView.jsx'
+import * as threadActions from '../actions/Thread.js'
+
+class ThreadPage extends Component {
+  storeCurrThread(id) {
+    const {setCurrThread} = this.props.threadActions
+    setCurrThread(id)
+  }
   render() {
-    return <div>
-      THREAD PAGE {this.props.params.id ? '#' + this.props.params.id : ''}
-    </div>
+    const threads = this.props.threads
+    const tid = this.props.params.id
+    this.storeCurrThread(tid)
+    const message = threads.filter((thread) => thread.id == tid)[0].message
+    return <ThreadPageView message={message}/>
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    threads: state.app.threads
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    threadActions: bindActionCreators(threadActions, dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ThreadPage)

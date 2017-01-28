@@ -1,1 +1,1 @@
-export const SHOW_THREAD = 'SHOW_THREAD'
+export const SET_CURR_THREAD = 'SET_CURR_THREAD'

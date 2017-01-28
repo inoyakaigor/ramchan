@@ -8,7 +8,6 @@ import * as threadActions from '../actions/Thread.js'
 
 class ThreadPreviews extends Component {
   gotoThread(thread) {
-    console.log('GO TO THREAD', thread)
     const {showThread} = this.props.threadActions
     showThread(thread.id)
   }

@@ -8,7 +8,7 @@ export default class FormView extends Component {
 
     return <form onSubmit={handleSubmit}>
               <TextField
-                floatingLabelText='Введите текст поста'
+                floatingLabelText='Введите текст…'
                 multiLine={true}
                 rows={5}
                 rowsMax={10}
