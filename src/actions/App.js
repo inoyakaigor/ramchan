@@ -9,14 +9,14 @@ export function writePost(cancel) {
     return (dispatch) => {
       dispatch({
         type: WRITE_POST,
-        writing: false
+        payload: {writing: false}
       })
     }
   }
   return (dispatch) => {
     dispatch({
       type: WRITE_POST,
-      writing: true
+      payload: {writing: true}
     })
   }
 }
