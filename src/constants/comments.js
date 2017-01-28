@@ -1,2 +1,2 @@
 export const ADD_COMMENT = 'ADD_COMMENT'
-export const WRITE_COMMENT = 'WRITE_COMMENT'
+export const COMMENT_WRITTEN = 'COMMENT_WRITTEN'

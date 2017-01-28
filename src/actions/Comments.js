@@ -1,13 +1,14 @@
 import {
   ADD_COMMENT,
-  WRITE_COMMENT
+  COMMENT_WRITTEN
 } from '../constants/comments.js'
 
-export function addComment(text) {
+export function addComment(tid, text) {
+  if (!text.trim()) return (dispatch) => dispatch
   return (dispatch) => {
     dispatch({
       type: ADD_COMMENT,
-      payload: {...state, text, writing_c: false}
+      payload: {tid, date: new Date()*1, text}
     })
   }
 }

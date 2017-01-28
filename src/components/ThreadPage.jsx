@@ -14,8 +14,13 @@ class ThreadPage extends Component {
     const threads = this.props.threads
     const tid = this.props.params.id
     this.storeCurrThread(tid)
-    const message = threads.filter((thread) => thread.id == tid)[0].message
-    return <ThreadPageView message={message}/>
+    const curr_thread = threads.filter((thread) => thread.id == tid)[0]
+    if (curr_thread) {
+      const message = curr_thread.message
+      return <ThreadPageView message={message}/>
+    } else {
+      return <div>I saw some shit</div>
+    }
   }
 }
 

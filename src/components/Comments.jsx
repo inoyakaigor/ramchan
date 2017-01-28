@@ -4,8 +4,18 @@ import {connect} from 'react-redux'
 
 import CommentsView from './CommentsView.jsx'
 import * as commentsActions from '../actions/Comments.js'
+import FormView from './FormView.jsx'
 
 class Comments extends Component {
+  handleSubmit(e) {
+    e.preventDefault();
+    const {addComment} = this.props.commentsActions
+    const curr_thread = this.props.curr_thread
+    const message = new FormData(e.target).get('thread_message');
+
+    e.target.thread_message.value = ''
+    addComment(curr_thread, message);
+  }
   render() {
     let comments = this.props.comments.all
     const tid = this.props.curr_thread
@@ -17,7 +27,7 @@ class Comments extends Component {
             Комментариев нет.<br/>
           </div>
          }
-        <button>Добавить?</button>
+        <FormView handleSubmit={::this.handleSubmit}/>
       </div>
   }
 }

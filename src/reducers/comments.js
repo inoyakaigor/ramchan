@@ -14,10 +14,10 @@ const initialState = {
 
 export default function comments(state = initialState, action) {
   switch (action.type) {
-    case WRITE_COMMENT:
-      return {...state, text: action.payload, writing_c: true}
     case ADD_COMMENT:
-      return {...state, text: action.payload, writing_c: false}
+      let new_comments = state.all.slice()
+      new_comments.push(action.payload)
+      return {...state, all: new_comments}
     default:
       return state
   }
