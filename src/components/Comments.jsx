@@ -14,7 +14,7 @@ class Comments extends Component {
     const message = new FormData(e.target).get('thread_message');
 
     e.target.thread_message.value = ''
-    addComment(curr_thread, message);
+    if (message.trim().length) addComment(curr_thread, message);
   }
   render() {
     let comments = this.props.comments.all

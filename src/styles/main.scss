@@ -11,27 +11,70 @@ body {
   font-size: 14px;
 }
 
-.button {
-  background-image: linear-gradient(to bottom, #9DFFB3, #70D487);
-  box-shadow: 0 0 10px silver;
-  border-radius: 5px;
-  padding: 0.5vh 0.5vw;
-  text-decoration: none;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
-  display: inline-block;
-  color: black;
-  cursor: pointer;
-  border: 0;
+#root {
+  width: 50vw;
+  max-width: 48em;
+  margin: 0 auto;
+}
 
-  &:active {
-    color: inherit;
+.page-header {
+  margin: 0vh 0 2.5vh 0;
+}
+
+.thread-preview {
+  margin-bottom: 1vh;
+  padding: 0.5vh 0.5vw;
+
+  .thread-header {
+    font-size: 1em;
+  }
+
+  .thread-message {
+
+  }
+
+}
+
+.thread-comments {
+  padding: 0.5vh 0.5vw;
+
+  .thread-comment {
+    padding: 0.5vh 0vw;
+    margin: 0.5vh 0vw;
+
+    .text {
+      margin-bottom: 1.5vh;
+    }
   }
 }
 
-.input {
-  border-radius: 0.2vh;
-  border: 0;
-  box-shadow: 0 0 0px 1px silver;
-  padding: 0.3vh 0.2vw;
+.form {
+  padding: 0.5vh 0.5vw;
+  margin-bottom: 1vh;
+}
+
+.actions {
+  text-align: right;
+
+  &.center {
+    text-align: center;
+  }
+}
+
+.button {
+  margin-right: 1vw;
+  margin: 0.5vh 0.5vw;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.back-link {
+  margin-bottom: 1.5vh;
+  display: inline-block;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 
 import ThreadPageView from './ThreadPageView.jsx'
 import * as threadActions from '../actions/Thread.js'
@@ -17,9 +18,16 @@ class ThreadPage extends Component {
     const curr_thread = threads.filter((thread) => thread.id == tid)[0]
     if (curr_thread) {
       const message = curr_thread.message
-      return <ThreadPageView message={message}/>
+      const date = curr_thread.date
+      return <div>
+
+        <ThreadPageView message={message} date={date}/>
+      </div>
     } else {
-      return <div>I saw some shit</div>
+      return <div>
+        <Link to='/' className='back-link'>← На главную</Link><br/>
+        I saw some shit
+      </div>
     }
   }
 }

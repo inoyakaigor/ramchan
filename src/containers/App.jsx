@@ -4,14 +4,15 @@ import {connect} from 'react-redux'
 
 //mui
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {orange200, orange900, grey200, white} from 'material-ui/styles/colors';
 
 import ThreadsPreviewView from '../components/ThreadsPreviewView.jsx'
 import FormView from '../components/FormView.jsx'
+import Header from '../components/Header.jsx'
 
 import * as appActions from '../actions/App.js'
 
@@ -64,15 +65,19 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <h1>Анонимная имиджборда. Добро пожаловать. Снова.</h1>
+          <Header />
           { writing
             ? <FormView handleSubmit={::this.handleSubmit} handleCancel={::this.handleCancel}/>
-            : <RaisedButton
-                label="Добавить пост"
-                primary={true}
-                onTouchTap={::this.handleAddThread}
-              />
+            : <div className='actions center'>
+                <RaisedButton
+                  label="Добавить пост"
+                  primary={true}
+                  onTouchTap={::this.handleAddThread}
+                  className='button'
+                />
+              </div>
           }
+          <Divider />
           <ThreadsPreviewView threads={threads}/>
         </div>
       </MuiThemeProvider>

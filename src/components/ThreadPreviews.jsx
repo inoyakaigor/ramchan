@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton';
 import * as threadActions from '../actions/Thread.js'
-
+import ThreadHeader from './ThreadHeader.jsx'
 
 class ThreadPreviews extends Component {
   gotoThread(thread) {
@@ -15,13 +15,16 @@ class ThreadPreviews extends Component {
     const {threads} = this.props
     return <div>
       {threads.map((thread, idx) => {
-        return <Paper key={idx}>
-                 <p>{thread.message}</p>
-                 <RaisedButton
+        return <Paper key={idx} className='thread-preview'>
+                <ThreadHeader date={thread.date}/>
+                <p className='thread-message'>{thread.message}</p>
+                <div className='actions'>
+                  <RaisedButton
                     label="Перейти"
                     primary={true}
                     onTouchTap={this.gotoThread.bind(this, thread)}
                   />
+                </div>
                </Paper>
       })}
     </div>
