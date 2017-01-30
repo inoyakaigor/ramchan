@@ -9,7 +9,7 @@ import ThreadHeader from './ThreadHeader.jsx'
 class ThreadPreviews extends Component {
   gotoThread(thread) {
     const {showThread} = this.props.threadActions
-    showThread(thread.id)
+    showThread(thread.tid)
   }
   render() {
     const {threads} = this.props

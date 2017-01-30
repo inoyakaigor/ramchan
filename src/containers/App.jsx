@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
+import CircularProgress from 'material-ui/CircularProgress';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {orange200, orange900, grey200, white} from 'material-ui/styles/colors';
@@ -15,7 +16,6 @@ import FormView from '../components/FormView.jsx'
 import Header from '../components/Header.jsx'
 
 import * as appActions from '../actions/App.js'
-
 
 const styles = {
   container: {
@@ -35,6 +35,7 @@ const muiTheme = getMuiTheme({
 function mapStateToProps (state) {
   return {
     writing: state.app.writing,
+    fetching: state.app.fetching,
     threads: state.app.threads
   }
 }
@@ -57,11 +58,23 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {postWritten} = this.props.appActions
+    const threads = this.props.threads
+
+    let curr_tid = threads.length == 0
+                    ? 0
+                    : threads.sort((p, n) => {
+                        return p.tid > n.tid ? 1 : p.tid < n.tid ? -1 : 0
+                      }).slice(-1)[0].tid
+
     const message = new FormData(e.target).get('thread_message');
-    postWritten(message);
+    postWritten({tid: ++curr_tid, message});
+  }
+  componentWillMount() {
+    const {getThreads} = this.props.appActions
+    getThreads()
   }
   render() {
-    const {threads, writing} = this.props
+    const {threads, writing, fetching} = this.props
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
@@ -78,7 +91,11 @@ class App extends Component {
               </div>
           }
           <Divider />
-          <ThreadsPreviewView threads={threads}/>
+          {
+           fetching
+           ? <div className='progress'><CircularProgress /></div>
+           : <ThreadsPreviewView threads={threads}/>
+          }
         </div>
       </MuiThemeProvider>
     )

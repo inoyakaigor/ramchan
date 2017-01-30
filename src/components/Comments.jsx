@@ -16,6 +16,10 @@ class Comments extends Component {
     e.target.thread_message.value = ''
     if (message.trim().length) addComment(curr_thread, message);
   }
+  componentWillMount() {
+    const {getComments} = this.props.commentsActions
+    getComments()
+  }
   render() {
     let comments = this.props.comments.all
     const tid = this.props.curr_thread

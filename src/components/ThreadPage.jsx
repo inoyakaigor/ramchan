@@ -7,15 +7,15 @@ import ThreadPageView from './ThreadPageView.jsx'
 import * as threadActions from '../actions/Thread.js'
 
 class ThreadPage extends Component {
-  storeCurrThread(id) {
+  storeCurrThread(tid) {
     const {setCurrThread} = this.props.threadActions
-    setCurrThread(id)
+    setCurrThread(tid)
   }
   render() {
     const threads = this.props.threads
-    const tid = this.props.params.id
+    const tid = this.props.params.tid
     this.storeCurrThread(tid)
-    const curr_thread = threads.filter((thread) => thread.id == tid)[0]
+    const curr_thread = threads.filter((thread) => thread.tid == tid)[0]
     if (curr_thread) {
       const message = curr_thread.message
       const date = curr_thread.date

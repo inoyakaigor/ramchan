@@ -1,15 +1,12 @@
 import {
   ADD_COMMENT,
-  WRITE_COMMENT
+  WRITE_COMMENT,
+  COMMENTS_LOADED
 } from '../constants/comments.js'
 
 const initialState = {
   writing_c: false,
-  all: [
-    {tid: 1, date: new Date()*1, text: 'Hello comments! Comment #1'}, // tid = thread id
-    {tid: 2, date: new Date()*1, text: 'Hello comments! Comment #2'},
-    {tid: 1, date: new Date()*1, text: 'Hello comments! Comment #3'}
-  ]
+  all: []
 }
 
 export default function comments(state = initialState, action) {
@@ -18,6 +15,12 @@ export default function comments(state = initialState, action) {
       let new_comments = state.all.slice()
       new_comments.push(action.payload)
       return {...state, all: new_comments}
+
+    case COMMENTS_LOADED:
+      let sync_comments = state.all.slice()
+      sync_comments = action.payload
+      return {...state, all: sync_comments, fetching: false}
+
     default:
       return state
   }

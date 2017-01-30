@@ -8,7 +8,7 @@ export const routes = (
   <div>
     <Route path='/'>
       <IndexRoute component={App}/>
-      <Route path='/thread(/:id)' component={ThreadPage} />
+      <Route path='/thread(/:tid)' component={ThreadPage} />
     </Route>
     <Route path='*' component={NotFound} />
   </div>
