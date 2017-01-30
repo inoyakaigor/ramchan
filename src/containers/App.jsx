@@ -90,7 +90,6 @@ class App extends Component {
                 />
               </div>
           }
-          <Divider />
           {
            fetching
            ? <div className='progress'><CircularProgress /></div>
